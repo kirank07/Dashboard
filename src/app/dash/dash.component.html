@@ -1,0 +1,42 @@
+<!-- dashboard.component.html -->
+<div class="grid-container">
+  <mat-grid-list cols="{{ ( cardLayout | async )?.columns }}" rowHeight="200px">
+    <!--Mini Cards-->
+    <mat-grid-tile *ngFor="let mc of miniCardData" [colspan]="( cardLayout | async )?.miniCard.cols"
+      [rowspan]="( cardLayout | async )?.miniCard.rows">
+      <app-mini-card [icon]="mc.icon" [title]="mc.title" [value]="mc.value" [color]="mc.color" [isIncrease]="mc.isIncrease" duration="since last month" [percentValue]="mc.percentValue" [isCurrency]="mc. isCurrency" ></app-mini-card>
+    </mat-grid-tile>
+    <!--Charts-->
+    <mat-grid-tile [colspan]="( cardLayout | async )?.chart.cols" [rowspan]="( cardLayout | async )?.chart.rows">
+      <app-card title="Monthly Revenue">
+        <app-annual-revenue-chart></app-annual-revenue-chart>
+      </app-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="( cardLayout | async )?.chart.cols" [rowspan]="( cardLayout | async )?.chart.rows">
+      <app-card title="Revenue by ISP">
+        <app-revenue-list-traffic-chart></app-revenue-list-traffic-chart>
+      </app-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="( cardLayout | async )?.chart.cols" [rowspan]="( cardLayout | async )?.chart.rows">
+      <app-card title="Revenue by Team">
+        <app-revenue-team-chart></app-revenue-team-chart>
+      </app-card>
+    </mat-grid-tile>
+    
+    <mat-grid-tile [colspan]="( cardLayout | async )?.chart.cols" [rowspan]="( cardLayout | async )?.chart.rows">
+      <app-card title="Revenue by List">
+        <app-revenue-list-chart></app-revenue-list-chart>
+      </app-card>
+    </mat-grid-tile>
+
+
+    <!--Table-->
+<!--     <mat-grid-tile [colspan]="( cardLayout | async )?.table.cols" [rowspan]="( cardLayout | async )?.table.rows">
+      <app-card title="Latest....">
+        
+      </app-card>
+    </mat-grid-tile> -->
+  </mat-grid-list>
+ </div>
